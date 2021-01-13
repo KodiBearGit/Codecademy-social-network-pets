@@ -22,7 +22,9 @@ export class Profile extends React.Component {
     //4of10 looks to be working now i had mispelled this
     let isLoading = (this.state.userData === null) ? true : false;
     //5of10 items this doesn't work here 
-    const name = isLoading ? 'Loading animal info' : this.state.userData.name;
+    const name = isLoading ? 'Loading animal name' : this.state.userData.name;
+    const bio = isLoading ? 'Loading animal bio' : this.state.userData.bio;
+    const friends = isLoading ? [] : this.state.userData.friends;
     let className = 'Profile';
     if (isLoading) {
       className += ' loading';
@@ -34,9 +36,9 @@ export class Profile extends React.Component {
         <div className="profile-body">
           <h2>{name}</h2>
           <h3>@{this.props.username}</h3>
-          <p>Bio goes here</p>
-          <h3>My friends</h3>
-          <Userlist usernames={[]} onChoose={this.props.onChoose} />
+          <p>{bio}</p>
+          <h3>{friends}</h3>
+          <Userlist usernames={friends} onChoose={this.props.onChoose} />
         </div>
       </div>
     );
